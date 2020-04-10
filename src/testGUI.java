@@ -17,6 +17,8 @@ public class testGUI {
 
 	public JFrame frmTerminal;
 	JTextArea textArea;
+	int line=1;
+	int pos = 0;
 
 	/**
 	 * Launch the application.
@@ -71,10 +73,24 @@ public class testGUI {
 		textArea = new JTextArea();
 		textArea.addKeyListener(new KeyAdapter() {
 			@Override
-			public void keyPressed(KeyEvent evt) {
+			public void keyReleased(KeyEvent evt) {
 				if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
-					System.out.println(textArea.getCaretPosition());
-					textArea.append(mainClass.cur);
+					//System.out.println(textArea.getCaretPosition());
+					
+					//textArea.append(mainClass.cur +">");
+					//pos = textArea.getCaretPosition(); 
+					System.out.println(textArea.getLineCount());
+				}
+			}
+		});
+		textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent evt) {
+				if(evt.getKeyCode() == KeyEvent.VK_UP) {
+					textArea.setEditable(false);
+					textArea.setCaretPosition(pos);
+					
+					//textArea.setEditable(true);
 				}
 			}
 		});
@@ -83,5 +99,7 @@ public class testGUI {
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(Color.BLACK);
 		textArea.setCaretColor(Color.white);
+		
+		
 	}
 }
