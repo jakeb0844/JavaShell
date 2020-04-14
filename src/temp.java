@@ -7,6 +7,8 @@ import javax.swing.KeyStroke;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class temp {
 
@@ -62,7 +64,29 @@ public class temp {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
+		/*textArea.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent evt) {
+				if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+					if(Caret>=1) {
+					
+					//textArea.getInputMap().remove(KeyStroke.getKeyStroke("BACK_SPACE"));
+					
+					}
+					else {
+						textArea.getInputMap().put(KeyStroke.getKeyStroke("BACK_SPACE"), "none");
+					}
+				}
+			}
+		});*/
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setBounds(0, 0, 434, 261);
+		frame.getContentPane().add(scrollPane);
+		
 		textArea = new JTextArea();
+		scrollPane.setViewportView(textArea);
 		textArea.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent evt) {
@@ -164,28 +188,10 @@ public class temp {
 				}
 			}
 		});
-		
-		/*textArea.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent evt) {
-				if(evt.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
-					if(Caret>=1) {
-					
-					//textArea.getInputMap().remove(KeyStroke.getKeyStroke("BACK_SPACE"));
-					
-					}
-					else {
-						textArea.getInputMap().put(KeyStroke.getKeyStroke("BACK_SPACE"), "none");
-					}
-				}
-			}
-		});*/
 		textArea.setLineWrap(true);
 		textArea.setForeground(Color.WHITE);
 		textArea.setBackground(Color.BLACK);
-		textArea.setBounds(0, 0, 434, 261);
 		textArea.setCaretColor(Color.white);
-		frame.getContentPane().add(textArea);
 	}
 
 }

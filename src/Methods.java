@@ -51,14 +51,20 @@ public class Methods {
 	
 	
 	public static void ls(File[] File, BasicFileAttributes attr) throws IOException {
+		temp2.textArea.append("\n");
 		for(int i=0; i < File.length; i++) {
 			if(!(File[i].isHidden())){
 				attr= Files.readAttributes(File[i].toPath(), BasicFileAttributes.class);
+				
 				if(File[i].isDirectory()) {
-					System.out.println(attr.creationTime() + "\t<DIR>\t" +File[i].getName());
+					//System.out.println(attr.creationTime() + "\t<DIR>\t" +File[i].getName());
+					temp2.textArea.append(attr.creationTime() + "\t<DIR>\t" +File[i].getName());
+					temp2.textArea.append("\n");
 				}
 				else {
-					System.out.println(attr.creationTime() + "\t     \t" +File[i].getName());
+					//System.out.println(attr.creationTime() + "\t     \t" +File[i].getName());
+					temp2.textArea.append(attr.creationTime() + "\t     \t" +File[i].getName());
+					temp2.textArea.append("\n");
 				}
 				
 			}
@@ -80,14 +86,16 @@ public class Methods {
 	
 	public static void cat(File[] filez,String name) {
 		
-		
+		temp2.textArea.append("\n");
 		File file = findFile(filez, name);
 		if(file != null) {
 			if(file.isFile()) {
 			try {
 				Scanner reader = new Scanner(file);
 				while(reader.hasNextLine()) {
-					System.out.println(reader.nextLine());
+					//System.out.println(reader.nextLine());
+					temp2.textArea.append(reader.nextLine());
+					temp2.textArea.append("\n");
 				}
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -95,17 +103,20 @@ public class Methods {
 			}
 			}//if
 			else {
-				System.out.println("Not File");
+				//System.out.println("Not File");
+				temp2.textArea.append("Can't Read From DIR" );
 			}
 		}
 		else {
-			System.out.println("File doesn't exists");
+			//System.out.println("File doesn't exists");
+			temp2.textArea.append("File doesn't exists");
 		}
 		
 	}
 
-	public static void clear() throws InterruptedException, IOException {
-	        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+	public static void clear() {
+	        //new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+		temp2.textArea.setText("");
 	    
 	}
 	
@@ -113,10 +124,19 @@ public class Methods {
 		File file = findFile(filez,name);
 		
 		if(file == null) {
-			new File(cur+name).mkdir();
+			if(cur.toLowerCase().equals("C:\\".toLowerCase())) {
+				System.out.println(cur+name);
+				new File(cur+name).mkdir();
+			}
+			else {
+				System.out.println(cur+"\\"+name);
+				new File(cur+"\\"+name).mkdir();
+			}
+		
 		}
 		else {
-			System.out.println("Folder or File Exists");
+			//System.out.println("Folder or File Exists");
+			temp2.textArea.append("\nFolder or File Exists");
 		}
 	}
 

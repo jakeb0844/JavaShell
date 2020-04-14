@@ -10,7 +10,7 @@ public class mainClass {
 		/*File folder = new File("C:\\");
 		File[] Filez = folder.listFiles();
 		BasicFileAttributes attr = null;
-		cur=Filez[0].getParent();
+		temp2.cur=Filez[0].getParent();
 		String op="";
 		String arg="";
 		String temp="";
@@ -21,8 +21,8 @@ public class mainClass {
 		temp2 window = new temp2();
 		window.frame.setVisible(true);
 		
-		temp2.cur = "C:\\";
-		temp2.line=1;
+		//temp2.cur = "C:\\";
+		/*temp2.line=1;
 		//CaretLine=1;
 		temp2.Caret=0;
 		window.textArea.append(temp2.cur+">");
@@ -33,7 +33,8 @@ public class mainClass {
 		window.textArea.getInputMap().put(KeyStroke.getKeyStroke("DOWN"), "none");
 		window.textArea.getInputMap().put(KeyStroke.getKeyStroke("Left"), "none");
 		window.textArea.getInputMap().put(KeyStroke.getKeyStroke("Right"), "none");
-			
+		window.textArea.getInputMap().put(KeyStroke.getKeyStroke("ENTER"), "none");
+		*/	
 			
 			
 		
